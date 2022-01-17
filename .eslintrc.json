@@ -12,7 +12,7 @@
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
-        "plugin:prettier"
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -25,15 +25,18 @@
     },
     "plugins": ["react", "prettier"],
     "ignorePatterns": [
-        "src/**/*.scss",
-        "src/**/*.sass",
+        "src/*.scss",
+        "src/*.sass",
         "package-lock.json",
         "package.json",
         "tsconfig.json",
         "react-app-env.d.ts"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+        "react/jsx-filename-extension": [
+            2,
+            { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+        ]
     },
     "settings": {
         "import/resolver": {
