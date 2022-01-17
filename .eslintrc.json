@@ -8,11 +8,11 @@
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
-        "prettier",
         "airbnb",
         "plugin:import/errors",
         "plugin:import/warnings",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "plugin:prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -23,7 +23,15 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
-    "plugins": ["react"],
+    "plugins": ["react", "prettier"],
+    "ignorePatterns": [
+        "src/**/*.scss",
+        "src/**/*.sass",
+        "package-lock.json",
+        "package.json",
+        "tsconfig.json",
+        "react-app-env.d.ts"
+    ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     },
