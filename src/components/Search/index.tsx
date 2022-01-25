@@ -5,6 +5,7 @@ import Input from './Input';
 interface SearchProps {
     items: string[];
     onSearch: (event: React.SyntheticEvent, value: string) => void;
+    onClick: (event: React.SyntheticEvent, selectedValue: string) => void;
 }
 
 function Search(props: SearchProps): JSX.Element {
@@ -18,6 +19,7 @@ function Search(props: SearchProps): JSX.Element {
                 getOptionLabel={(option) => option}
                 renderInput={Input}
                 onInputChange={props.onSearch}
+                onChange={props.onClick}
             />
         </div>
     );
