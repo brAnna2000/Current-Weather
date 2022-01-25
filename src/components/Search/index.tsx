@@ -1,6 +1,6 @@
 import './style.scss';
 import Autocomplete from '@mui/material/Autocomplete';
-import Input from './Input';
+import RenderInput from './RenderInput';
 
 interface SearchProps {
     items: string[];
@@ -16,7 +16,7 @@ function Search(props: SearchProps): JSX.Element {
                 options={props.items}
                 autoHighlight
                 getOptionLabel={(option) => option}
-                renderInput={Input}
+                renderInput={RenderInput}
                 onInputChange={props.onSearch}
             />
         </div>
