@@ -28,7 +28,7 @@ async function getSearch(search: string) {
 
         items = items.map((item: ItemsCity) => item.address.city);
         return items;
-    } catch (error: unknown) {
+    } catch (error) {
         return error;
     }
 }
