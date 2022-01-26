@@ -23,6 +23,7 @@ interface City {
         state: string;
     };
 }
+
 async function searchingCity(search: string) {
     const path = `${process.env.REACT_APP_HERE_API_BASE_URL}autocomplete`;
     try {
