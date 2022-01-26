@@ -1,10 +1,11 @@
 import './style.scss';
 import Autocomplete from '@mui/material/Autocomplete';
-import RenderInput from './RenderInput';
+import Input from './Input';
 
 interface SearchProps {
-    items: string[];
+    cities: string[];
     onSearch: (event: React.SyntheticEvent, value: string) => void;
+    onClick: (event: React.SyntheticEvent, selectedValue: string) => void;
 }
 
 function Search(props: SearchProps): JSX.Element {
@@ -13,11 +14,11 @@ function Search(props: SearchProps): JSX.Element {
             <Autocomplete
                 id="country-select-demo"
                 sx={{ width: 300 }}
-                options={props.items}
+                options={props.cities}
                 autoHighlight
-                getOptionLabel={(option) => option}
-                renderInput={RenderInput}
+                renderInput={Input}
                 onInputChange={props.onSearch}
+                onChange={props.onClick}
             />
         </div>
     );
