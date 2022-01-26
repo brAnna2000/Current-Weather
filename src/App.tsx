@@ -21,6 +21,24 @@ function App(): JSX.Element {
         weather: '',
     });
     useEffect(() => {
+        if (info.city === '') {
+            getWeatherInfo('Минск').then((res) => {
+                setInfo(res);
+            });
+        }
+    }, [info]);
+
+    if (navigator.geolocation) {
+        const a = navigator.geolocation.getCurrentPosition((position) => {
+            getWeatherInfo(
+                `lat${position.coords.latitude}lon${position.coords.longitude}`
+            ).then((res) => {
+                setInfo(res);
+            });
+        });
+    }
+
+    useEffect(() => {
         if (search) {
             getSearch(search).then((res) => {
                 setItems(res);

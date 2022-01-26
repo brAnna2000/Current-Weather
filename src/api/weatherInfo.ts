@@ -22,15 +22,24 @@ async function getWeatherInfo(city: string) {
         });
         return descript;
     }
-    const path1 = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&lang=ru`;
+    let path = '';
+    if (city.startsWith('lat') && city.includes('lon')) {
+        const lat = city.slice(3, city.indexOf('.') + 8);
+        const lon = city.slice(city.indexOf('lon') + 3);
+        path = `${process.env.REACT_APP_OPEN_WEATHER_URL}lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&lang=ru`;
+    } else {
+        path = `${process.env.REACT_APP_OPEN_WEATHER_URL}q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&lang=ru`;
+    }
+
     try {
-        const res = await axios.get(path1);
+        const res = await axios.get(path);
         const {
             data: {
                 wind: { speed },
                 main: { temp, temp_min, temp_max },
                 sys: { sunset, sunrise },
                 weather,
+                name,
             },
         } = res;
 
@@ -45,7 +54,7 @@ async function getWeatherInfo(city: string) {
             sunrise: string;
             weather: string;
         } = {
-            city,
+            city: city.startsWith('lat') && city.includes('lon') ? name : city,
             country: 'Беларусь',
             speed,
             temp: Math.round(Number(`${temp - 273.15}`)),

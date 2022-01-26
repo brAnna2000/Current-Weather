@@ -18,17 +18,17 @@ interface InfoProps {
 }
 
 function WeatherInfo(props: InfoProps): JSX.Element {
-    const cityInfo = [
-        'Минск',
-        'Беларусь',
-        '+2',
-        '+5',
-        '-4',
-        '3,8',
-        'Облачно',
-        '9:20',
-        '17:40',
-    ];
+    // const cityInfo = [
+    //     'Минск',
+    //     'Беларусь',
+    //     '+2',
+    //     '+5',
+    //     '-4',
+    //     '3,8',
+    //     'Облачно',
+    //     '9:20',
+    //     '17:40',
+    // ];
     return (
         <Box
             sx={{ width: '100%', maxWidth: 406, bgcolor: 'background.paper' }}
@@ -40,70 +40,38 @@ function WeatherInfo(props: InfoProps): JSX.Element {
                     <div>
                         <div className="city">
                             <p>
-                                {props.info.city !== ''
-                                    ? props.info.city
-                                    : cityInfo[0]}
+                                {props.info.city}
                                 ,&nbsp;
                             </p>
-                            <p>
-                                {props.info.city !== ''
-                                    ? props.info.country
-                                    : cityInfo[1]}
-                            </p>
+                            <p>{props.info.country}</p>
                         </div>
-                        <p className="currentTemp">
-                            {props.info.city !== ''
-                                ? props.info.temp
-                                : cityInfo[2]}
-                        </p>
+                        <p className="currentTemp">{props.info.temp}</p>
                         <p className="currentInfo">Текущая температура</p>
                         <div className="minMax">
                             <div>
-                                <p>
-                                    {props.info.city !== ''
-                                        ? props.info.temp_max
-                                        : cityInfo[3]}
-                                </p>
+                                <p>{props.info.temp_max}</p>
                                 <p>Максимум</p>
                             </div>
                             <div>
-                                <p>
-                                    {props.info.city !== ''
-                                        ? props.info.temp_min
-                                        : cityInfo[4]}
-                                </p>
+                                <p>{props.info.temp_min}</p>
                                 <p>Минимум</p>
                             </div>
                         </div>
-                        <p className="description">
-                            {props.info.city !== ''
-                                ? props.info.weather
-                                : cityInfo[6]}
-                        </p>
+                        <p className="description">{props.info.weather}</p>
                         <div className="sunWind">
                             <div>
-                                <p>
-                                    {props.info.city !== ''
-                                        ? props.info.sunrise
-                                        : cityInfo[7]}
-                                </p>
+                                <p>{props.info.sunrise}</p>
                                 <p>Время заката</p>
                             </div>
                             <div>
                                 <p>
-                                    {props.info.city !== ''
-                                        ? props.info.speed
-                                        : cityInfo[5]}
+                                    {props.info.speed}
                                     &nbsp;м/с
                                 </p>
                                 <p>Скорость ветра</p>
                             </div>
                             <div>
-                                <p>
-                                    {props.info.city !== ''
-                                        ? props.info.sunset
-                                        : cityInfo[8]}
-                                </p>
+                                <p>{props.info.sunset}</p>
                                 <p>Время рассвета</p>
                             </div>
                         </div>
