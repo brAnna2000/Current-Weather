@@ -5,6 +5,7 @@ import Input from './Input';
 interface SearchProps {
     cities: string[];
     onSearch: (event: React.SyntheticEvent, value: string) => void;
+    onClick: (event: React.SyntheticEvent, selectedValue: string) => void;
 }
 
 function Search(props: SearchProps): JSX.Element {
@@ -17,6 +18,7 @@ function Search(props: SearchProps): JSX.Element {
                 autoHighlight
                 renderInput={Input}
                 onInputChange={props.onSearch}
+                onChange={props.onClick}
             />
         </div>
     );

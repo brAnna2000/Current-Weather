@@ -23,7 +23,9 @@ interface City {
         state: string;
     };
 }
-
+<<<<<<< HEAD
+=======
+>>>>>>> ac8a7c4c0c9fa7128418b20a32e22c89f115db77
 async function searchingCity(search: string) {
     const path = `${process.env.REACT_APP_HERE_API_BASE_URL}autocomplete`;
     try {
