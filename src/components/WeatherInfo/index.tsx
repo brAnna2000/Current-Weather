@@ -18,17 +18,6 @@ interface InfoProps {
 }
 
 function WeatherInfo(props: InfoProps): JSX.Element {
-    // const cityInfo = [
-    //     'Минск',
-    //     'Беларусь',
-    //     '+2',
-    //     '+5',
-    //     '-4',
-    //     '3,8',
-    //     'Облачно',
-    //     '9:20',
-    //     '17:40',
-    // ];
     return (
         <Box
             sx={{ width: '100%', maxWidth: 406, bgcolor: 'background.paper' }}

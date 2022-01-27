@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function getWeatherInfo(city: string) {
+async function receivingWeatherInfo(city: string) {
     function time(sun: number) {
         const date = new Date(sun * 1000);
         const hours = date.getHours();
@@ -66,8 +66,9 @@ async function getWeatherInfo(city: string) {
         };
         return info;
     } catch (error) {
+        alert(`Ошибка ${error.name} : ${error.message}`);
         return error;
     }
 }
 
-export default getWeatherInfo;
+export default receivingWeatherInfo;

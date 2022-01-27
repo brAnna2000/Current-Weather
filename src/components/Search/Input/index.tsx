@@ -2,7 +2,7 @@ import { AutocompleteRenderInputParams } from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import './style.scss';
 
-function RenderInput(props: AutocompleteRenderInputParams) {
+function Input(props: AutocompleteRenderInputParams) {
     return (
         <TextField
             {...props}
@@ -15,4 +15,4 @@ function RenderInput(props: AutocompleteRenderInputParams) {
     );
 }
 
-export default RenderInput;
+export default Input;

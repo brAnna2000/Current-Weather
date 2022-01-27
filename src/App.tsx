@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import './App.scss';
 import Search from './components/Search/index';
 import WeatherInfo from './components/WeatherInfo/index';
-import getSearch from './api/searchCities';
-import getWeatherInfo from './api/weatherInfo';
+import searchingCity from './api/searchingCity';
+import receivingWeatherInfo from './api/receivingWeatherInfo';
 
 function App(): JSX.Element {
     const [search, setSearch] = useState<string>('');
-    const [items, setItems] = useState<string[]>([]);
+    const [cities, setCities] = useState<string[]>([]);
     const [selected, setSelect] = useState<string>('');
-    const [info, setInfo] = useState({
+    const [weatherData, setWeatherData] = useState({
         city: '',
         country: '',
         speed: 0,
@@ -21,38 +21,38 @@ function App(): JSX.Element {
         weather: '',
     });
     useEffect(() => {
-        if (info.city === '') {
-            getWeatherInfo('Минск').then((res) => {
-                setInfo(res);
+        if (weatherData.city === '') {
+            receivingWeatherInfo('Минск').then((res) => {
+                setWeatherData(res);
             });
         }
-    }, [info]);
+    }, [weatherData]);
 
     if (navigator.geolocation) {
         const a = navigator.geolocation.getCurrentPosition((position) => {
-            getWeatherInfo(
+            receivingWeatherInfo(
                 `lat${position.coords.latitude}lon${position.coords.longitude}`
             ).then((res) => {
-                setInfo(res);
+                setWeatherData(res);
             });
         });
     }
 
     useEffect(() => {
         if (search) {
-            getSearch(search).then((res) => {
-                setItems(res);
+            searchingCity(search).then((res) => {
+                setCities(res);
             });
         }
     }, [search]);
     useEffect(() => {
         if (selected) {
-            getWeatherInfo(selected).then((res) => {
-                setInfo(res);
+            receivingWeatherInfo(selected).then((res) => {
+                setWeatherData(res);
             });
         }
     }, [selected]);
-    function searchChanging(_: React.SyntheticEvent, value: string) {
+    function searchInputChanging(_: React.SyntheticEvent, value: string) {
         setSearch(value);
     }
     function selectedOption(_: React.SyntheticEvent, selectedValue: string) {
@@ -61,11 +61,11 @@ function App(): JSX.Element {
     return (
         <div className="App">
             <Search
-                onSearch={searchChanging}
+                onSearch={searchInputChanging}
                 onClick={selectedOption}
-                items={items}
+                cities={cities}
             />
-            <WeatherInfo info={info} />
+            <WeatherInfo weatherData={weatherData} />
         </div>
     );
 }
