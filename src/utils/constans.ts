@@ -2,23 +2,17 @@ enum SearchCityTypes {
     CITY = 'city',
     AREA = 'area',
 }
-enum SearchCityCircle {
-    CIRCLE = '53.90,27.55',
-    RADIUS = 300000,
-}
-enum SearchCityCountryCode {
-    COUNTRY_CODE = 'BLR',
-}
-enum SearchCityLimit {
-    LIMIT = 10,
-}
-enum SearchCityLang {
-    LANG = 'ru',
-}
+const CIRCLE = '53.90,27.55';
+const RADIUS = 300000;
+const COUNTRY_CODE = 'BLR';
+const LIMIT = 10;
+const LANG = 'ru';
+
 export {
     SearchCityTypes,
-    SearchCityCircle,
-    SearchCityCountryCode,
-    SearchCityLimit,
-    SearchCityLang,
+    CIRCLE,
+    RADIUS,
+    COUNTRY_CODE,
+    LIMIT,
+    LANG
 };

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import './App.scss';
 import Search from './components/Search/index';
-import searchingCity from './api/searchingCity';
+import searchCities from './api/searchCities';
 
 function App(): JSX.Element {
     const [search, setSearch] = useState<string>('');
     const [cities, setCities] = useState<string[]>([]);
     useEffect(() => {
         if (search) {
-            searchingCity(search).then((res) => {
+            searchCities(search).then((res) => {
                 setCities(res);
             });
         }
