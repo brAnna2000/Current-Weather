@@ -12,7 +12,7 @@ import City from '../types/City/index'
 
 async function searchCities(search: string) {
     const path = `${process.env.REACT_APP_HERE_API_BASE_URL}autocomplete`;
-    const cityParams = {
+    const requestConfig = {
             params: {
                 q: search,
                 apiKey: process.env.REACT_APP_API_KEY,
@@ -26,9 +26,9 @@ async function searchCities(search: string) {
     try {
         const {
             data: { items },
-        } = await axios.get(path, cityParams);
+        } = await axios.get(path, requestConfig);
         return items.map((item: City) => item.address.city);
-    } catch (error) {
+    } catch (error: any) {
         return [];
     }
 }
