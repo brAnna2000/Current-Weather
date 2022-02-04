@@ -13,12 +13,12 @@ function App(): JSX.Element {
             });
         }
     }, [search]);
-    function searchInputChanging(_: React.SyntheticEvent, value: string) {
+    function onCitiesSearch(_: React.SyntheticEvent, value: string) {
         setSearch(value);
     }
     return (
         <div className="App">
-            <Search onSearch={searchInputChanging} cities={cities} />
+            <Search onSearch={onCitiesSearch} cities={cities} />
         </div>
     );
 }
