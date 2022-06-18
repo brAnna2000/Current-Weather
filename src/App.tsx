@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import './Components/FavoriteCitiesList/index'
 import FavoriteCitiesList from './Components/FavoriteCitiesList/index';
 interface AppProps {
     citiesList: string[],
