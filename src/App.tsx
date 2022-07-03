@@ -10,17 +10,25 @@ function App({citiesList = []}:AppProps) {
     const dispatch = useDispatch();
     const cities: string[] = useSelector(state => state.cities);
     citiesList = cities;
-    const addCash = (city: string | null) => {
-        dispatch({type: 'ADD_CITY', payload: city});
+    const addCity = (city: string | null) => {
+        if(city !== ''){
+            dispatch({type: 'ADD_CITY', payload: city});
+        }else{
+            alert('Не введено название города');
+        };
     };
-    const getCash = (city: string | null) => {
-        dispatch({type: 'REMOVE_CITY', payload: city});
+    const removeCity = (city: string | null) => {
+        if(city !== ''){
+            dispatch({type: 'REMOVE_CITY', payload: city});
+        }else{
+            alert('Не введено название города');
+        };
     };
     return (
     <div className="App">
         <FavoriteCitiesList {...citiesList}/>
-        <button type='button' onClick={()=> addCash(prompt())}>Добавить город</button>
-        <button type='button' onClick={()=> getCash(prompt())}>Удалить город</button>
+        <button type='button' onClick={()=> addCity(prompt())}>Добавить город</button>
+        <button type='button' onClick={()=> removeCity(prompt())}>Удалить город</button>
     </div>
     );
 }
