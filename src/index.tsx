@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import './index.css';
-import App from './App.tsx';
+import './index.scss';
+import App from './App';
 
 const defaultState={cities: ['Барановичи','Борисов','Витебск','Минск','Гродно','Смолевичи','Молодечно','Лида']};
 const ADD_CITY = 'ADD_CITY';

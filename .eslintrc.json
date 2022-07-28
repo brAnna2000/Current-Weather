@@ -14,6 +14,14 @@
         "plugin:import/typescript",
         "prettier"
     ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "parserOptions": {
+                "project": ["./tsconfig.json"]
+            }
+        }
+    ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -21,7 +29,8 @@
         },
         "ecmaVersion": 13,
         "sourceType": "module",
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "extraFileExtensions:": [".ts"]
     },
     "plugins": ["react", "prettier"],
     "ignorePatterns": [
@@ -34,8 +43,40 @@
     ],
     "rules": {
         "react/jsx-filename-extension": [
-            2,
+            1,
             { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+        ],
+        "react/jsx-props-no-spreading": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "react/destructuring-assignment": ["error", "never"],
+        "react/jsx-no-bind": [
+            "error",
+            {
+                "ignoreDOMComponents": true,
+                "ignoreRefs": false,
+                "allowArrowFunctions": true,
+                "allowFunctions": true,
+                "allowBind": true
+            }
+        ],
+        "no-restricted-syntax": [
+            "error",
+            "FunctionExpression",
+            "WithStatement",
+            "BinaryExpression[operator='in']"
+        ],
+        "no-unused-vars": [
+            "error",
+            { "vars": "all", "args": "none", "ignoreRestSiblings": false }
         ]
     },
     "settings": {
@@ -44,5 +85,9 @@
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
             }
         }
+    },
+    "globals": {
+        "JSX": true,
+        "React": true
     }
 }

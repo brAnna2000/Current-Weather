@@ -1,11 +1,13 @@
 import React from 'react';
-import './App.css';
 import {useDispatch, useSelector} from 'react-redux';
+import './App.scss';
 import FavoriteCitiesList from './Components/FavoriteCitiesList/index.tsx';
+import Search from './components/Search/index';
 
 interface AppProps {
     citiesList: string[],
 }
+
 function App({citiesList = []}:AppProps) {
     const dispatch = useDispatch();
     const cities: string[] = useSelector(state => state.cities);
@@ -29,6 +31,7 @@ function App({citiesList = []}:AppProps) {
         <FavoriteCitiesList {...citiesList}/>
         <button type='button' onClick={()=> addCity(prompt())}>Добавить город</button>
         <button type='button' onClick={()=> removeCity(prompt())}>Удалить город</button>
+        <Search/>
     </div>
     );
 }
